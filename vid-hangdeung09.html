@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>예습 확인 · 09강 항등식</title>
+<meta name="description" content="영상 시청 후 관련문제 풀이 — 공통수학1 09강 항등식 (수마루수학)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="예습 확인 · 09강 항등식">
+<meta property="og:description" content="영상을 본 뒤 바로 관련문제를 풀고 즉시 채점받는 예습 페이지 (데모)">
+<meta property="og:url" content="https://yanga1052-del.github.io/emi-hw-preview/vid-hangdeung09.html">
+<meta name="twitter:card" content="summary">
+<style>
+  :root{ --navy:#1F3864; --blue:#2E6FB7; --ok:#157A4D; --bad:#C0392B;
+         --soft:#EAF0F8; --line:#D8E0EC; --ink:#1b2430; --mut:#5b6673; }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Malgun Gothic","맑은 고딕",system-ui,sans-serif;
+       color:var(--ink);background:#F4F6FA;line-height:1.6;}
+  .wrap{max-width:760px;margin:0 auto;padding:16px 16px 60px;}
+  /* 상단 바 */
+  .top{background:var(--navy);color:#fff;border-radius:14px;padding:16px 18px;margin:10px 0 14px;
+       box-shadow:0 6px 18px rgba(31,56,100,.18);}
+  .top .sub{font-size:13px;color:#cdd8 ;opacity:.85}
+  .top h1{margin:2px 0 2px;font-size:19px;letter-spacing:-.3px}
+  .top .meta{font-size:12.5px;opacity:.8}
+  .chip{display:inline-block;background:rgba(255,255,255,.16);border-radius:999px;
+        padding:2px 10px;font-size:12px;margin-right:6px}
+  /* 카드 */
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 16px;margin:12px 0;
+        box-shadow:0 2px 8px rgba(20,40,80,.05)}
+  .card h2{margin:0 0 10px;font-size:15px;color:var(--navy);display:flex;align-items:center;gap:7px}
+  .stepno{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;
+          background:var(--navy);color:#fff;font-size:12px;font-weight:700}
+  /* 이름 입력 */
+  .row{display:flex;gap:8px;flex-wrap:wrap}
+  .row label{font-size:12.5px;color:var(--mut);display:block;margin-bottom:3px}
+  .row input,.row select{padding:8px 10px;border:1px solid var(--line);border-radius:9px;font-size:14px;min-width:120px}
+  /* 영상 */
+  .video{position:relative;padding-top:56.25%;border-radius:12px;overflow:hidden;background:#000}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .watchbtn{margin-top:12px;width:100%;padding:13px;border:0;border-radius:11px;cursor:pointer;
+            background:var(--blue);color:#fff;font-size:15px;font-weight:700}
+  .watchbtn.done{background:var(--ok)}
+  .hint{font-size:12.5px;color:var(--mut);margin-top:8px}
+  /* 문제 */
+  #quiz{display:none}
+  .q{border-top:1px dashed var(--line);padding:16px 0 4px}
+  .q:first-child{border-top:0}
+  .qh{font-weight:700;font-size:14.5px;margin-bottom:9px}
+  .qh .tag{color:var(--blue);font-size:12px;font-weight:700;margin-left:4px}
+  .stem{background:var(--soft);border-radius:9px;padding:10px 12px;margin:0 0 10px;font-size:14.5px}
+  .opts{display:grid;gap:7px}
+  .opt{display:flex;align-items:center;gap:9px;padding:9px 11px;border:1px solid var(--line);
+       border-radius:10px;cursor:pointer;font-size:14.5px;background:#fff;transition:.12s}
+  .opt:hover{border-color:var(--blue);background:#fbfdff}
+  .opt input{accent-color:var(--blue);width:16px;height:16px}
+  .opt.correct{border-color:var(--ok);background:#EAF7F0}
+  .opt.wrong{border-color:var(--bad);background:#FCEEEC}
+  .sol{display:none;margin-top:9px;font-size:13.5px;border-left:3px solid var(--navy);
+       background:#fafbfe;padding:9px 12px;border-radius:0 8px 8px 0;color:#33404f}
+  .sol b{color:var(--navy)}
+  .mark{font-weight:700;margin-left:6px}
+  .mark.o{color:var(--ok)} .mark.x{color:var(--bad)}
+  sup{font-size:.72em}
+  .gradebtn{margin-top:14px;width:100%;padding:14px;border:0;border-radius:12px;cursor:pointer;
+            background:var(--navy);color:#fff;font-size:16px;font-weight:800;letter-spacing:.3px}
+  .gradebtn:disabled{opacity:.5;cursor:not-allowed}
+  /* 결과 */
+  #result{display:none;margin-top:14px;text-align:center;border-radius:12px;padding:16px;
+          background:linear-gradient(135deg,#1F3864,#2E6FB7);color:#fff}
+  #result .big{font-size:30px;font-weight:800}
+  #result .ln{font-size:13.5px;opacity:.92;margin-top:4px}
+  .foot{font-size:11.5px;color:var(--mut);text-align:center;margin-top:22px;line-height:1.7}
+  .badgefoot{display:inline-flex;align-items:center;gap:6px;background:#E4F4EC;color:var(--ok);
+             border-radius:999px;padding:4px 12px;font-size:12px;font-weight:700;margin:4px 0 10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div class="sub">예습 확인 · 공통수학1</div>
+    <h1>09강 — 항등식</h1>
+    <div class="meta"><span class="chip">수마루수학</span><span class="chip">1시간 9분</span> 영상 시청 후 관련문제를 풀면 예습 완료</div>
+  </div>
+
+  <!-- 1. 이름 -->
+  <div class="card">
+    <h2><span class="stepno">1</span> 누구인지 알려주세요</h2>
+    <div class="row">
+      <div><label>반</label>
+        <select id="cls"><option value="">선택</option><option>1반</option><option>2반</option><option>3반</option><option>4반</option></select></div>
+      <div style="flex:1"><label>이름</label><input id="nm" placeholder="홍길동"></div>
+    </div>
+  </div>
+
+  <!-- 2. 영상 -->
+  <div class="card">
+    <h2><span class="stepno">2</span> 강의 영상 보기</h2>
+    <div class="video">
+      <iframe src="https://www.youtube-nocookie.com/embed/n5aXRE2AQHo"
+        title="09강 항등식" allowfullscreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+    </div>
+    <button class="watchbtn" id="watch" onclick="watched()">▶ 영상 다 봤어요 — 문제 풀기</button>
+    <div class="hint">※ 아래 문제는 이 영상을 봐야 풀 수 있어요. (항등식의 뜻 · 미정계수법 · 수치대입법)</div>
+  </div>
+
+  <!-- 3. 문제 -->
+  <div class="card" id="quiz">
+    <h2><span class="stepno">3</span> 관련문제 풀이 <span style="font-size:12px;color:var(--mut);font-weight:400">· 4문항</span></h2>
+
+    <!-- 문제들은 JS로 채점. data-answer는 정답 번호(1~5) -->
+    <div class="q" data-answer="2">
+      <div class="qh">1. 다음 중 <b>x에 대한 항등식</b>인 것은? <span class="tag">[항등식의 뜻]</span></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q1"><span>① x<sup>2</sup> = 1</span></label>
+        <label class="opt"><input type="radio" name="q1"><span>② x<sup>2</sup> − 1 = (x−1)(x+1)</span></label>
+        <label class="opt"><input type="radio" name="q1"><span>③ (x+1)<sup>2</sup> = x<sup>2</sup> + 1</span></label>
+        <label class="opt"><input type="radio" name="q1"><span>④ 2x + 1 = x + 1</span></label>
+        <label class="opt"><input type="radio" name="q1"><span>⑤ x<sup>3</sup> = x</span></label>
+      </div>
+      <div class="sol"><b>정답 ②.</b> 항등식은 x에 <b>어떤 값을 넣어도 항상 성립</b>하는 등식. ②는 우변을 전개하면 x<sup>2</sup>−1 로 양변이 완전히 같습니다. ①은 x=±1, ④는 x=0, ⑤는 x=0,±1에서만 성립, ③은 전개하면 2x 만큼 차이가 나 성립하지 않습니다.</div>
+    </div>
+
+    <div class="q" data-answer="4">
+      <div class="qh">2. 등식 a(x+1)<sup>2</sup> + b(x+1) + c = x<sup>2</sup> + 3x + 4 가 x에 대한 항등식일 때, a<sup>2</sup>+b<sup>2</sup>+c<sup>2</sup> 의 값은? <span class="tag">[계수비교법]</span></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q2"><span>① 3</span></label>
+        <label class="opt"><input type="radio" name="q2"><span>② 4</span></label>
+        <label class="opt"><input type="radio" name="q2"><span>③ 5</span></label>
+        <label class="opt"><input type="radio" name="q2"><span>④ 6</span></label>
+        <label class="opt"><input type="radio" name="q2"><span>⑤ 7</span></label>
+      </div>
+      <div class="sol"><b>정답 ④.</b> 좌변을 전개하면 a x<sup>2</sup> + (2a+b)x + (a+b+c). <b>계수를 비교</b>하면 a=1, 2a+b=3 → b=1, a+b+c=4 → c=2. 따라서 a<sup>2</sup>+b<sup>2</sup>+c<sup>2</sup> = 1+1+4 = 6.</div>
+    </div>
+
+    <div class="q" data-answer="3">
+      <div class="qh">3. 다항식 (1+2x)<sup>4</sup> = a<sub>0</sub> + a<sub>1</sub>x + a<sub>2</sub>x<sup>2</sup> + a<sub>3</sub>x<sup>3</sup> + a<sub>4</sub>x<sup>4</sup> 일 때, a<sub>0</sub>+a<sub>1</sub>+a<sub>2</sub>+a<sub>3</sub>+a<sub>4</sub> 의 값은? <span class="tag">[수치대입법]</span></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q3"><span>① 27</span></label>
+        <label class="opt"><input type="radio" name="q3"><span>② 54</span></label>
+        <label class="opt"><input type="radio" name="q3"><span>③ 81</span></label>
+        <label class="opt"><input type="radio" name="q3"><span>④ 162</span></label>
+        <label class="opt"><input type="radio" name="q3"><span>⑤ 243</span></label>
+      </div>
+      <div class="sol"><b>정답 ③.</b> 모든 계수의 합은 항등식에 <b>x=1 을 대입</b>하면 바로 나옵니다. (1+2·1)<sup>4</sup> = 3<sup>4</sup> = 81.</div>
+    </div>
+
+    <div class="q" data-answer="1">
+      <div class="qh">4. 위 (1+2x)<sup>4</sup> 의 전개에서 <b>홀수차항의 계수의 합</b> a<sub>1</sub>+a<sub>3</sub> 의 값은? <span class="tag">[수치대입 활용]</span></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q4"><span>① 40</span></label>
+        <label class="opt"><input type="radio" name="q4"><span>② 30</span></label>
+        <label class="opt"><input type="radio" name="q4"><span>③ 50</span></label>
+        <label class="opt"><input type="radio" name="q4"><span>④ 20</span></label>
+        <label class="opt"><input type="radio" name="q4"><span>⑤ 60</span></label>
+      </div>
+      <div class="sol"><b>정답 ①.</b> x=1 대입 f(1)=81, x=−1 대입 f(−1)=(1−2)<sup>4</sup>=1. 홀수차항 계수의 합 = <b>(f(1)−f(−1))/2</b> = (81−1)/2 = 40.</div>
+    </div>
+
+    <button class="gradebtn" id="grade" onclick="gradeIt()">채점하기</button>
+    <div id="result"></div>
+  </div>
+
+  <div class="foot">
+    <div class="badgefoot">✓ 전 문항 SymPy 자동 검산 완료 (정답·선지 유일성)</div><br>
+    예습 확인 시스템 데모 · 문제는 영상 단원에 맞춰 AI(Claude)가 생성하고 수식 계산으로 검증했습니다.<br>
+    실제 운영 시 — 제출하면 <b>반·이름·점수·제출시각</b>이 선생님 대시보드와 반별 시트에 자동 기록됩니다.
+  </div>
+
+</div>
+
+<script>
+function watched(){
+  var q=document.getElementById('quiz'), b=document.getElementById('watch');
+  q.style.display='block'; b.classList.add('done'); b.textContent='✓ 시청 완료 — 아래 문제를 풀어요';
+  q.scrollIntoView({behavior:'smooth'});
+}
+function gradeIt(){
+  var nm=document.getElementById('nm').value.trim();
+  var cls=document.getElementById('cls').value;
+  if(!cls||!nm){ alert('반과 이름을 먼저 입력해 주세요.'); window.scrollTo({top:0,behavior:'smooth'}); return; }
+  var qs=document.querySelectorAll('.q'), score=0, total=qs.length, answered=0;
+  qs.forEach(function(q){
+    var ans=parseInt(q.getAttribute('data-answer'));
+    var opts=q.querySelectorAll('.opt');
+    var picked=-1;
+    opts.forEach(function(o,i){ var r=o.querySelector('input'); if(r.checked) picked=i+1; o.classList.remove('correct','wrong'); });
+    if(picked>0) answered++;
+    // 정답칸 표시
+    opts[ans-1].classList.add('correct');
+    if(picked>0 && picked!==ans) opts[picked-1].classList.add('wrong');
+    // 채점 마크
+    var old=q.querySelector('.mark'); if(old) old.remove();
+    var qh=q.querySelector('.qh'); var mk=document.createElement('span'); mk.className='mark '+(picked===ans?'o':'x');
+    mk.textContent = picked===ans?'  ✓ 정답':'  ✗ 오답';
+    qh.appendChild(mk);
+    q.querySelector('.sol').style.display='block';
+    if(picked===ans) score++;
+  });
+  var pct=Math.round(score/total*100);
+  var r=document.getElementById('result'); r.style.display='block';
+  r.innerHTML='<div class="big">'+score+' / '+total+'</div>'+
+    '<div class="ln">'+cls+' '+nm+' · 정답률 '+pct+'%'+(pct>=60?' · 예습 통과 👍':' · 영상을 다시 보고 복습해요')+'</div>'+
+    '<div class="ln" style="margin-top:8px;font-size:12px;opacity:.8">(데모에서는 기록만 보여줍니다 — 실제로는 대시보드에 자동 전송)</div>';
+  r.scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
